@@ -1,0 +1,15 @@
+---
+- hosts: dbservers
+  become: true
+  connection: local
+
+  tasks:
+  - name: Test vars
+    debug: 
+      var: package
+
+  - name: Install a Package
+    apt:
+      name: "{{package}}"
+      state: latest
+...

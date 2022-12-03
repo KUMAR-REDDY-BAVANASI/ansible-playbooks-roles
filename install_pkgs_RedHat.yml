@@ -1,0 +1,11 @@
+  - name: Install httpd on Redhat family
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family =='RedHat'
+
+  - name: Install open java rpm on Redhat family
+    yum:
+      name: https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.rpm
+      state: present
+    when: ansible_os_family =='RedHat'

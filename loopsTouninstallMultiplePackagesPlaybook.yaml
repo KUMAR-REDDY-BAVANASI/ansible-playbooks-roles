@@ -1,0 +1,18 @@
+---
+- name: uninstall multiple packages
+  hosts: localhost
+  become: yes
+  gather_facts: no
+
+  tasks:
+  - name: Install a list of packages
+    apt:
+      name: "{{ item }}"
+      update_cache: yes
+      state: absent
+      force_apt_get: yes
+    with_items:
+    - 'git'
+    - 'apache2'
+    - 'vim'
+...

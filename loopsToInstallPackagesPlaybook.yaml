@@ -1,0 +1,14 @@
+---
+- name: Install multiple packages
+  hosts: localhost
+  become: true
+ 
+  tasks:
+  - name: Install list of packages
+    ignore_errors: yes
+    apt:  
+      name: ['apache2', 'wget', 'vim', 'zip', 'unzip']
+      update_cache: yes
+      state: present
+      force_apt_get: yes
+...

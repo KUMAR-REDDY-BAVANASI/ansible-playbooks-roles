@@ -1,0 +1,25 @@
+---
+- name: Ansible ignore_errors examples
+  hosts: localhost
+  gather_facts: no
+  vars:
+    name: KUMAR REDDY BAVANASI
+  
+  tasks:
+  - name: deleting a file
+    command: "rm /home/devops/kumarreddy.txt"
+    ignore_errors: true
+
+  - name: debug a file
+    debug:
+      msg: Name is {{name}}
+
+  - name: list out the files from devops
+    command: "ls -lrt /home/devops/"
+    register: devops_out
+    ignore_errors: true
+
+  - name: debug the contents
+    debug:
+      var: devops_out
+...

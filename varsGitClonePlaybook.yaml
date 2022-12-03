@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+    package1: vim
+    package2: git
+
+  tasks:
+  - name: Install vim
+    apt:
+      name: "{{package1}}"
+      state: latest
+
+   - name: Install Git
+     apt: 
+       name: "{{package2}}" 
+       state: latest
+
+   - name: git clone
+     git:
+      repo: "https://github.com/KUMAR-REDDY-BAVANASI/petclinic-multistage-docker-file.git"
+      dest: /home/devops/petclinic-multistage-docker-file
+...

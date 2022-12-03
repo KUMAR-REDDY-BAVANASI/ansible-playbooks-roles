@@ -1,0 +1,13 @@
+  - name: Install apache2 on Debian family
+    apt:
+      update_cache: yes
+      name: apache2
+      state: present
+      force_apt_get: yes
+    when: ansible_os_family =='Debian'
+
+  - name: Install jdk package on Debian server
+    apt:
+      update_cache: yes
+      name: openjdk-8-jdk
+    when: ansible_os_family =='Debian'

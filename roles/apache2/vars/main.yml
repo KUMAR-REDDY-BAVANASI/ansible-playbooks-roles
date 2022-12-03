@@ -1,0 +1,4 @@
+---
+# vars file for apache2
+pkg_ubuntu: "apache2"
+pkg_redhat: "httpd"

@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: true
+  gather_facts: no
+  remote_user: ansible
+
+  tasks:
+  - name: Creating a file
+    file:
+      path: /tmp/kumar.sh
+      owner: root
+      mode: 0777
+      state: touch
+...

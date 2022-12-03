@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: yes
+
+  tasks:
+  - name: Fetch Java version
+    shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
+    register: java_version
+  
+  - name: Print Version
+    debug:
+      var: java_version.stdout
+  
+  - name: dummy task
+    debug: 
+      msg: "Java Already Exists"
+    when: java_version.stdout != ""
+...

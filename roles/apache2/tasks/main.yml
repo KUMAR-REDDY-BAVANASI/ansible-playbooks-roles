@@ -1,0 +1,27 @@
+---
+# tasks file for apache2
+- name: Install httpd on Redhat family
+  yum:
+    name: "{{ pkg_redhat }}"
+    state: present
+  notify: restart httpd
+  when: ansible_os_family =='RedHat'
+
+- name: Install apache2 on Debian family
+  apt:
+    update_cache: yes
+    name: "{{ pkg_ubuntu }}"
+    state: present
+    force_apt_get: yes
+  when: ansible_os_family =='Debian'
+
+- name: copy the jinja2 template
+  template:
+    src: dynamicindex.html.j2
+    dest: /var/www/html/index.html
+  notify: restart apache2
+
+- name: copy the file to remote servers
+  copy:
+    src: staticindex.html
+    dest: /var/www/html/staticindex.html

@@ -1,0 +1,17 @@
+---
+- name: Check the server connection
+  hosts: localhost
+  gather_facts: no
+  become: true
+  remote_user: ansible
+
+  tasks:
+  - name: Test connection
+    ping:
+    remote_user: ansible
+    register: connection_out
+  
+  - name: debug the connection
+    debug:
+      var: connection_out
+...
