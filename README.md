@@ -1,1 +1,7 @@
-# ansible-playbooks-roles
+# ansible-roles/playbooks
+
+ansible-galaxy
+role
+playbooks
+tasks
+actions
